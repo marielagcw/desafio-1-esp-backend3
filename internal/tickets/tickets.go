@@ -1,6 +1,17 @@
 package tickets
 
+// Ticket representa un pasaje de una aerolínea
 type Ticket struct {
+	Id		  	int
+	Nombre	  	string
+	Email	  	string
+	PaisDestino string
+	HoraVuelo  	string
+	Precio	  	string
+}
+
+type Storage struct {
+	Tickets []Ticket
 }
 
 // ejemplo 1
