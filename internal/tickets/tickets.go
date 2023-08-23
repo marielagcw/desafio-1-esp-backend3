@@ -1,5 +1,9 @@
 package tickets
 
+import (
+	"fmt"
+)
+
 // Ticket representa un pasaje de una aerolínea
 type Ticket struct {
 	Id		  	int
@@ -13,6 +17,11 @@ type Ticket struct {
 type Storage struct {
 	Tickets []Ticket
 }
+
+func (s *Storage) PrintInfo() {
+	fmt.Printf("%v+", s.Tickets)
+}
+
 
 // ejemplo 1
 func GetTotalTickets(destination string) (int, error) {}

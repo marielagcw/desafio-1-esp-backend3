@@ -2,6 +2,11 @@ package main
 
 import (
 	"github.com/bootcamp-go/desafio-go-bases/internal/tickets"
+	"log"
+	"os"
+	"strings"
+	"fmt"
+
 )
 
 const (
@@ -9,10 +14,20 @@ const (
 )
 
 func main() {
+	defer func() {
+		if err := recover(); err != nil {
+			log.Fatal(err)
+		}
+	}
+
 	total, err := tickets.GetTotalTickets("Brazil")
 
 	Storage := tickets.Storage{
 		Tickets: readFile(filename),
+	}
+
+	storage.PrintInfo()
+
 }
 
 
@@ -20,7 +35,7 @@ func main() {
 func readFile(filename string) []tickets.Ticket {
 	file, err := os.readFile(filename)
 
-	iferr != nil {
+	if err != nil {
 		panic(err)
 	}
 
@@ -46,3 +61,4 @@ func readFile(filename string) []tickets.Ticket {
 	}
 
 	return result
+}
