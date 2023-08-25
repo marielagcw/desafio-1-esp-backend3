@@ -18,7 +18,7 @@ func main() {
 		}
 	}()
 
-	// total, err := tickets.GetTotalTickets("Brazil")
+	
 
 	Storage := tickets.Storage{
 		Tickets: readFile(filename),
@@ -26,7 +26,12 @@ func main() {
 
 	Storage.PrintInfo()
 
+	total, err := Storage.GetTotalTickets("Brazil")
+	fmt.Println("Total de tickets a destino elegido:", total)
+
 }
+
+
 
 
 // readFile lee el archivo de tickets y devuelve un slice de tickets
