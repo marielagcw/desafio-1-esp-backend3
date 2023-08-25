@@ -1,12 +1,10 @@
 package main
 
 import (
-	"github.com/bootcamp-go/desafio-go-bases/internal/tickets"
+	"github.com/marielagcw/desafio-1-esp-backend3/internal/tickets"
 	"log"
 	"os"
 	"strings"
-	"fmt"
-
 )
 
 const (
@@ -18,22 +16,22 @@ func main() {
 		if err := recover(); err != nil {
 			log.Fatal(err)
 		}
-	}
+	}()
 
-	total, err := tickets.GetTotalTickets("Brazil")
+	// total, err := tickets.GetTotalTickets("Brazil")
 
 	Storage := tickets.Storage{
 		Tickets: readFile(filename),
 	}
 
-	storage.PrintInfo()
+	Storage.PrintInfo()
 
 }
 
 
 // readFile lee el archivo de tickets y devuelve un slice de tickets
 func readFile(filename string) []tickets.Ticket {
-	file, err := os.readFile(filename)
+	file, err := os.ReadFile(filename)
 
 	if err != nil {
 		panic(err)
@@ -43,7 +41,7 @@ func readFile(filename string) []tickets.Ticket {
 
 	var result []tickets.Ticket
 
-	for i:0; i < len(data); i++ {
+	for i := 0; i < len(data); i++ {
 
 		if len(data[i]) > 0 {
 			file := strings.Split(data[i], ",")
