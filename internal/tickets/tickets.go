@@ -31,7 +31,6 @@ func (s *Storage) GetTotalTickets(destination string) (int, error) {
 			count++
 		}
 	}
-	fmt.Printf("Total de tickets para %s: %d\n", destination, count)
 	return count, nil
 }
 
@@ -43,7 +42,6 @@ func (s *Storage) GetCountByPeriod(period string) (int, error) {
 			count++
 		}
 	}
-	fmt.Printf("Total de tickets para %s: %d\n", period, count)
 	return count, nil
 }
 
