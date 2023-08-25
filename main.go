@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 	"strings"
+	"fmt"
 )
 
 const (
@@ -27,9 +28,15 @@ func main() {
 	Storage.PrintInfo()
 
 	total, err := Storage.GetTotalTickets("Brazil")
-	fmt.Println("Total de tickets a destino elegido:", total)
+		if err != nil {
+			panic(err)
+		}
+		fmt.Println("Total de tickets a destino elegido:", total)
+	}
+	
+	
 
-}
+
 
 
 
