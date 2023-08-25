@@ -68,12 +68,19 @@ func (s *Storage) isInPeriod(timeStr string, period string) bool {
 	}
 }
 
+// Requerimiento 3: Calcular el porcentaje de personas que viajan a un país determinado en un día.
+func (s *Storage) PercentageDestination(destination string, total int) (float64, error) {
+	count := 0
+	for _, ticket := range s.Tickets {
+		if ticket.PaisDestino == destination {
+			count++
+		}
+	}
 
-// ejemplo 1
-// func GetTotalTickets(destination string) (int, error) {}
+	if(total == 0){
+		return 0, nil
+	}
 
-// ejemplo 2
-// func GetMornings(time string) (int, error) {}
-
-// ejemplo 3
-// func AverageDestination(destination string, total int) (int, error) {}
+	percentage := float64(count) / float64(total) * 100.0
+	return percentage, nil
+}

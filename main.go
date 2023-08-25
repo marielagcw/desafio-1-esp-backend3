@@ -32,15 +32,17 @@ func main() {
 			panic(err)
 		}
 		fmt.Println("Total de tickets a destino elegido:", total)
-	}
 	
+	totalCantidadTickets := len(Storage.Tickets)	
+
+	percentageTravellersPerDay, err := Storage.PercentageDestination("Brazil", totalCantidadTickets)
+    if err != nil {
+        panic(err)
+    }
+    fmt.Printf("Porcentaje de personas que viajan a este pais en un dia: %.2f%%\n", percentageTravellersPerDay)
+
+}
 	
-
-
-
-
-
-
 // readFile lee el archivo de tickets y devuelve un slice de tickets
 func readFile(filename string) []tickets.Ticket {
 	file, err := os.ReadFile(filename)
