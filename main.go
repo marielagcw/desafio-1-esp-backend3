@@ -27,7 +27,7 @@ func main() {
 
 	Storage.PrintInfo()
 
-	total, err := Storage.GetTotalTickets("Brazil"){
+	total, err := Storage.GetTotalTickets("Brazil")
 		if err != nil {
 			panic(err)
 		}
@@ -36,7 +36,7 @@ func main() {
 	
 	
 
-}
+
 
 
 
