@@ -36,6 +36,7 @@ func readFile(filename string) []tickets.Ticket {
 	if err != nil {
 		panic(err)
 	}
+}
 
 	data := strings.Split(string(file), "\n")
 
