@@ -23,7 +23,7 @@ func (s *Storage) PrintInfo() {
 	fmt.Printf("%v+", s.Tickets)
 }
 
-// GetTotalTickets calcula cuántas personas viajan a un país determinado.
+// Requerimiento 1: GetTotalTickets calcula cuántas personas viajan a un país determinado.
 func (s *Storage) GetTotalTickets(destination string) (int, error) {
 	count := 0
 	for _, ticket := range s.Tickets {
@@ -31,10 +31,11 @@ func (s *Storage) GetTotalTickets(destination string) (int, error) {
 			count++
 		}
 	}
+	fmt.Printf("Total de tickets para %s: %d\n", destination, count)
 	return count, nil
 }
 
-// GetCountByPeriod calcula cuántas personas viajan en un período de tiempo específico.
+// Requerimiento 2: GetCountByPeriod calcula cuántas personas viajan en un período de tiempo específico.
 func (s *Storage) GetCountByPeriod(period string) (int, error) {
 	count := 0
 	for _, ticket := range s.Tickets {
@@ -42,6 +43,7 @@ func (s *Storage) GetCountByPeriod(period string) (int, error) {
 			count++
 		}
 	}
+	fmt.Printf("Total de tickets para %s: %d\n", period, count)
 	return count, nil
 }
 
@@ -65,8 +67,6 @@ func (s *Storage) isInPeriod(timeStr string, period string) bool {
 		return false
 	}
 }
-
-
 
 
 // ejemplo 1
