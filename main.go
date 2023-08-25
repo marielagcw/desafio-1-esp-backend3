@@ -26,7 +26,16 @@ func main() {
 
 	Storage.PrintInfo()
 
+	percentageTravellersPerDay, err := Storage.PercentageDestination("Brazil", totalToBrazil)
+    if err != nil {
+        panic(err)
+    }
+    fmt.Printf("Porcentaje de personas que viajan a este pais en un dia: %.2f%%\n", percentageTravellersPerDay)
+
 }
+
+
+
 
 
 // readFile lee el archivo de tickets y devuelve un slice de tickets
