@@ -2,6 +2,7 @@ package tickets
 
 import (
 	"fmt"
+	"time"
 )
 
 // Ticket representa un pasaje de una aerolínea
@@ -21,6 +22,19 @@ type Storage struct {
 func (s *Storage) PrintInfo() {
 	fmt.Printf("%v+", s.Tickets)
 }
+
+func (s *Storage) GetTotalTickets(destination string) (int, error) {
+	count := 0
+	for _, ticket := range s.Tickets {
+		if ticket.PaisDestino == destination {
+			count++
+		}
+	}
+	return count, nil
+}
+
+
+
 
 // ejemplo 1
 // func GetTotalTickets(destination string) (int, error) {}
