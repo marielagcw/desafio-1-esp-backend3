@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 	"strings"
+	"fmt"
 )
 
 const (
@@ -18,7 +19,7 @@ func main() {
 		}
 	}()
 
-	// total, err := tickets.GetTotalTickets("Brazil")
+	
 
 	Storage := tickets.Storage{
 		Tickets: readFile(filename),
@@ -26,18 +27,22 @@ func main() {
 
 	Storage.PrintInfo()
 
-	percentageTravellersPerDay, err := Storage.PercentageDestination("Brazil", totalToBrazil)
+	total, err := Storage.GetTotalTickets("Brazil")
+		if err != nil {
+			panic(err)
+		}
+		fmt.Println("Total de tickets a destino elegido:", total)
+	
+	totalCantidadTickets := len(Storage.Tickets)	
+
+	percentageTravellersPerDay, err := Storage.PercentageDestination("Brazil", totalCantidadTickets)
     if err != nil {
         panic(err)
     }
     fmt.Printf("Porcentaje de personas que viajan a este pais en un dia: %.2f%%\n", percentageTravellersPerDay)
 
 }
-
-
-
-
-
+	
 // readFile lee el archivo de tickets y devuelve un slice de tickets
 func readFile(filename string) []tickets.Ticket {
 	file, err := os.ReadFile(filename)
@@ -45,7 +50,6 @@ func readFile(filename string) []tickets.Ticket {
 	if err != nil {
 		panic(err)
 	}
-}
 
 	data := strings.Split(string(file), "\n")
 
